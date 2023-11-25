@@ -3,7 +3,7 @@ Import random to generate random integers in game.
 """
 from random import randint
 
-def welcome_page():
+def welcome_message():
     """
     Displays a greeting.
     Ascii art source:
@@ -19,4 +19,13 @@ def welcome_page():
     """)
     print("=" * 42 + "\n")
     print("Welcome to Battleship! \n")
-welcome_page()    
+welcome_message()    
+
+def input_name():
+    """
+    Ask the user for a name and stores it
+    in a global variable to be used in the game.
+    """
+    global user_name
+    user_name = input("Please enter your name: \n")
+input_name()        
