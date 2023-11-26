@@ -67,12 +67,28 @@ class Board:
         self.ships = []
         self.board = [["." for x in range(size)] for y in range(size)]
 
-    def print_board(self):
+    def print_board(self, other_board=None):
         """
-        Prints the boards with rows and columns 
+        Prints the boards with rows and columns.
         """
-        for row in self.board:
-            print(" ".join(row))
+        player_name = f"{self.name}'s" if self.type == "user" else "Computer"
+        print(f"{player_name} gameboard{' ' * (2 * self.size - len(player_name) - len(' gameboard'))}", end="")
+    
+        if other_board is not None:
+            print(f"   {other_board.name}'s gameboard")
+            col_str = " ".join(map(str, range(self.size)))
+            header = f"  {col_str}{' ' * (2 * self.size - len(col_str))}      {col_str}"
+            print(header)
+
+            for row, (user_row, comp_row) in enumerate(zip(self.board, other_board.board)):
+                print(f"{row}|{'|'.join(user_row)}{' ' * (2 * self.size - len(user_row))}|  "
+                    f"{row}|{'|'.join(comp_row)}")
+        else:
+            print("")
+            col_numbers = " ".join(map(str, range(self.size)))
+            print(f"  {col_numbers}")
+            for row_number, row in enumerate(self.board):
+                print(f"{row_number}|{'|'.join(row)}")
 
     def guess(self, x, y):
         """
@@ -112,6 +128,7 @@ class Board:
             if self.type == "user":
                 self.board[x][y] = "@"
 
+    
     def populate_board(self):
         """
         Randomly place ships on the board.
@@ -124,4 +141,10 @@ class Board:
                     self.place_ship(row, col)
                     break         
 
-            
+test_user_board = Board(6, 4, "Test User", "user")
+test_user_board.populate_board()
+test_user_board.print_board()
+
+test_comp_board = Board(6, 4, "Test Computer", "computer")
+test_comp_board.populate_board()
+test_comp_board.print_board()         
