@@ -141,10 +141,16 @@ class Board:
                     self.place_ship(row, col)
                     break         
 
-test_user_board = Board(6, 4, "Test User", "user")
-test_user_board.populate_board()
-test_user_board.print_board()
+def validate_coordinates(board, board_2, row, col):
+    """
+    Prints if a guess is a hit or a miss and increments the score.
+    """
+    shot = board_2.guess(row, col)
+    if shot == "Hit":
+        print(f"{board.name} hit an enemy ship!")
+    else:
+        print(f"{board.name} missed this time.")  
 
-test_comp_board = Board(6, 4, "Test Computer", "computer")
-test_comp_board.populate_board()
-test_comp_board.print_board()         
+
+
+
