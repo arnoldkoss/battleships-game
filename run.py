@@ -75,10 +75,22 @@ class Board:
             print(" ".join(row))
 
     def guess(self, x, y):
+        """
+        Checks whether the guess is a hit or miss and
+        saves all guesses in guesses variable.
+        Prints 'X' for hit and '-' for miss.
+        """
+        if not (0 <= x < self.size and 0 <= y < self.size):
+            print("Invalid guess. Please enter valid row and column values.")
+            return "Invalid Guess"
+
+        if (x, y) in self.guesses:
+            print("You've already guessed that!")
+            return "Already Guessed"
 
         self.guesses.append((x, y))
 
-        if (row, col) in self.ships:
+        if (x, y) in self.ships:
             self.board[x][y] = "X"
             return "Hit"
         else:
@@ -87,4 +99,29 @@ class Board:
         
     
 
- 
+    def place_ship(self, x, y, type="computer"):
+        """
+        Places ships on the board with the help
+        of randomized coordinates passed in from
+        populate_board.
+        """
+        if len(self.ships) >= self.num_ships:
+            pass
+        else:
+            self.ships.append((x, y))
+            if self.type == "user":
+                self.board[x][y] = "@"
+
+    def populate_board(self):
+        """
+        Randomly place ships on the board.
+        """
+        for _ in range(self.num_ships):
+            while True:
+                row = randint(0, self.size - 1)
+                col = randint(0, self.size - 1)
+                if (row, col) not in self.ships:
+                    self.place_ship(row, col)
+                    break         
+
+            
