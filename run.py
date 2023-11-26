@@ -152,5 +152,22 @@ def validate_coordinates(board, board_2, row, col):
         print(f"{board.name} missed this time.")  
 
 
+def make_guess(board, other_board):
+    """
+    Handles the process of making a guess, taking input from the user or generating it for the computer.
+    """
+    print(f"\n{board.name}'s Turn:")
+    board.print_board(other_board)
 
+    while True:
+        try:
+            row = int(input("Enter the row (0 to {}): ".format(board.size - 1)))
+            col = int(input("Enter the column (0 to {}): ".format(board.size - 1)))
+
+            if 0 <= row < board.size and 0 <= col < board.size and (row, col) not in board.guesses:
+                return row, col
+            else:
+                print("Invalid coordinates. Please enter valid and unused coordinates.")
+        except ValueError:
+            print("Invalid input. Please enter a number.")
 
