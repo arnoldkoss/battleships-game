@@ -49,3 +49,20 @@ def input_name():
             break
 input_name() 
 print(f"Welcome, {user_name}!") 
+
+
+class Board:
+    """
+    Main class to create game boards. Sets board size,
+    number of ships, username and type of board(user
+    or computer). Stores guesses made and the location
+    of the randomized ships.
+    """
+    def __init__(self, size, num_ships, name, board_type):
+        self.size = size
+        self.num_ships = num_ships
+        self.name = name
+        self.type = board_type  
+        self.guesses = []
+        self.ships = []
+        self.board = [["." for _ in range(size)] for _ in range(size)]
