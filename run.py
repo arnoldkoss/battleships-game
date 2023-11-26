@@ -65,4 +65,26 @@ class Board:
         self.type = board_type  
         self.guesses = []
         self.ships = []
-        self.board = [["." for _ in range(size)] for _ in range(size)]
+        self.board = [["." for x in range(size)] for y in range(size)]
+
+    def print_board(self):
+        """
+        Prints the boards with rows and columns 
+        """
+        for row in self.board:
+            print(" ".join(row))
+
+    def guess(self, x, y):
+
+        self.guesses.append((x, y))
+
+        if (row, col) in self.ships:
+            self.board[x][y] = "X"
+            return "Hit"
+        else:
+            self.board[x][y] = "-"
+            return "Miss"        
+        
+    
+
+ 
