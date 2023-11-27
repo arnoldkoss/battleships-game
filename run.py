@@ -171,3 +171,35 @@ def make_guess(board, other_board):
         except ValueError:
             print("Invalid input. Please enter a number.")
 
+def play_battleship():
+    """
+    Main function to play Battleship.
+    """
+    user_board = Board(size=6, num_ships=4, name=user_name, board_type="user")
+    comp_board = Board(size=6, num_ships=4, name="Computer", board_type="computer")
+
+    user_board.populate_board()
+    comp_board.populate_board()
+
+    while True:
+        # User's turn
+        user_row, user_col = make_guess(user_board, comp_board)
+        validate_coordinates(user_board, comp_board, user_row, user_col)
+
+        # Check if user has sunk all computer ships
+        if len(comp_board.ships) == 0:
+            print(f"\nCongratulations, {user_name}! You sunk all computer ships. You win!")
+            break
+
+        # Computer's turn
+        comp_row, comp_col = randint(0, 5), randint(0, 5)
+        print("\nComputer's Turn:")
+        validate_coordinates(comp_board, user_board, comp_row, comp_col)
+
+        # Check if computer has sunk all user ships
+        if len(user_board.ships) == 0:
+            print("\nGame over! The computer sunk all your ships. You lose!")
+            break
+
+if __name__ == "__main__":
+    play_battleship()
