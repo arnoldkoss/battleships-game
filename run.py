@@ -1,8 +1,5 @@
-"""
-Import random to generate random integers in game.
-"""
+# Import random to generate random integers in game.
 from random import randint
-
 
 
 def welcome_message():
@@ -24,7 +21,6 @@ def welcome_message():
     print("Board size: 6. Number of ships: 4 \n")
     print("Top left corner is row: 0, col: 0  \n")
 
-welcome_message()
 
 def validate_name_input(name):
     """Validate the user's name input."""
@@ -37,6 +33,7 @@ def validate_name_input(name):
     else:
         return True
 
+
 def input_name():
     """
     Get the user's name and store it
@@ -47,8 +44,7 @@ def input_name():
         user_name = input("Please enter your name: \n")
         if validate_name_input(user_name):
             break
-input_name() 
-print(f"Welcome, {user_name}!") 
+    print(f"Welcome, {user_name}!") 
 
 
 class Board:
@@ -67,12 +63,15 @@ class Board:
         self.ships = []
         self.board = [["." for x in range(size)] for y in range(size)]
 
+
     def print_board(self, other_board=None):
         """
         Prints the boards with rows and columns.
         """
         player_name = f"{self.name}'s" if self.type == "user" else "Computer"
         print(f"{player_name} gameboard", end="")
+        
+        
 
         # Adjust the spacing between the two boards
         space_between_boards = 10  # Adjust this value as needed
@@ -95,7 +94,52 @@ class Board:
             print(f"  {col_numbers}")
             for row_number, row in enumerate(self.board):
                 print(f"{row_number}|{'|'.join(row)}")
+     
+            # Prints the boards with rows and columns.  
+            player_name = f"{self.name}'s" if self.type == "user" else "Computer"
+            print(f"{player_name} gameboard", end="")
 
+            # Adjust the spacing between the two boards
+            space_between_boards = 10  # You can adjust this value as needed​
+
+            if other_board is not None:
+                print(f"{' ' * space_between_boards}{other_board.name}'s gameboard")
+                col_str = " ".join(map(str, range(self.size)))
+                header = f"  {col_str}{' ' * space_between_boards}  {col_str}"
+                print(header)
+
+                for row, (user_row, comp_row) in enumerate(zip(self.board, other_board.board)):
+                    # Adjust the spacing after the user row to align the rows
+                    user_row_str = "|".join(user_row)
+                    space_after_user_row = (2 * self.size - len(user_row_str)) + space_between_boards
+                    print(f"{row}|{user_row_str}{' ' * space_after_user_row}{row}|{'|'.join(comp_row)}")
+            else:
+                print("")
+                col_numbers = " ".join(map(str, range(self.size)))
+                print(f"  {col_numbers}")
+                for row_number, row in enumerate(self.board):
+                    print(f"{row_number}|{'|'.join(row)}")    
+                # Prints the boards with rows and columns.
+                player_name = f"{self.name}'s" if self.type == "user" else "Computer"
+                print(f"{player_name} gameboard{' ' * (2 * self.size - len(player_name) - len(' gameboard'))}", end="")
+            
+                if other_board is not None:
+                    print(f"   {other_board.name}'s gameboard")
+                    col_str = " ".join(map(str, range(self.size)))
+                    header = f"  {col_str}{' ' * (2 * self.size - len(col_str))}      {col_str}"
+                    print(header)
+
+                    for row, (user_row, comp_row) in enumerate(zip(self.board, other_board.board)):
+                        print(f"{row}|{'|'.join(user_row)}{' ' * (2 * self.size - len(user_row))}|  "
+                            f"{row}|{'|'.join(comp_row)}")
+                else:
+                    print("")
+                    col_numbers = " ".join(map(str, range(self.size)))
+                    print(f"  {col_numbers}")
+                    for row_number, row in enumerate(self.board):
+                        print(f"{row_number}|{'|'.join(row)}")
+                        
+                    
     def guess(self, x, y):
         """
         Checks whether the guess is a hit or miss and
@@ -118,8 +162,6 @@ class Board:
         else:
             self.board[x][y] = "-"
             return "Miss"        
-        
-    
 
     def place_ship(self, x, y, type="computer"):
         """
@@ -133,7 +175,6 @@ class Board:
             self.ships.append((x, y))
             if self.type == "user":
                 self.board[x][y] = "@"
-
     
     def populate_board(self):
         """
@@ -145,7 +186,8 @@ class Board:
                 col = randint(0, self.size - 1)
                 if (row, col) not in self.ships:
                     self.place_ship(row, col)
-                    break         
+                    break
+
 
 def validate_coordinates(board, board_2, row, col):
     """
@@ -160,7 +202,8 @@ def validate_coordinates(board, board_2, row, col):
 
 def make_guess(board, other_board):
     """
-    Handles the process of making a guess, taking input from the user or generating it for the computer.
+    Handles the process of making a guess, taking input from the user or 
+    generating it for the computer.
     """
     print(f"\n{board.name}'s Turn:")
     board.print_board(other_board)
@@ -207,5 +250,12 @@ def play_battleship():
             print("\nGame over! The computer sunk all your ships. You lose!")
             break
 
-if __name__ == "__main__":
+
+def main():
+    welcome_message()
+    input_name()
     play_battleship()
+
+
+if __name__ == "__main__":
+    main()
