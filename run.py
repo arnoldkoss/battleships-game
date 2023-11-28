@@ -8,14 +8,16 @@ def welcome_message():
     Ascii art source:
     https://patorjk.com/software/taag/#p=display&f=Doom&t=Battleship
     """
-    print("""
+    print(
+        """
  _    _      _                          _ 
 | |  | |    | |                        | |
 | |  | | ___| | ___ ___  _ __ ___   ___| |
 | |/\| |/ _ \ |/ __/ _ \| '_ ` _ \ / _ \ |
 \  /\  /  __/ | (_| (_) | | | | | |  __/_|
  \/  \/ \___|_|\___\___/|_| |_| |_|\___(_)
-    """)
+    """
+    )
     print("=" * 42 + "\n")
     print("Welcome to Battleship! \n")
     print("Board size: 6. Number of ships: 4 \n")
@@ -44,7 +46,7 @@ def input_name():
         user_name = input("Please enter your name: \n")
         if validate_name_input(user_name):
             break
-    print(f"Welcome, {user_name}!") 
+    print(f"Welcome, {user_name}!")
 
 
 class Board:
@@ -54,15 +56,15 @@ class Board:
     or computer). Stores guesses made and the location
     of the randomized ships.
     """
+
     def __init__(self, size, num_ships, name, board_type):
         self.size = size
         self.num_ships = num_ships
         self.name = name
-        self.type = board_type  
+        self.type = board_type
         self.guesses = []
         self.ships = []
         self.board = [["." for x in range(size)] for y in range(size)]
-
 
     def print_board(self, other_board=None):
         """
@@ -70,8 +72,6 @@ class Board:
         """
         player_name = f"{self.name}'s" if self.type == "user" else "Computer"
         print(f"{player_name} gameboard", end="")
-        
-        
 
         # Adjust the spacing between the two boards
         space_between_boards = 10  # Adjust this value as needed
@@ -83,19 +83,25 @@ class Board:
             header = f"  {col_str}{' ' * (space_between_boards + 1)}  {col_str}"
             print(header)
 
-            for row, (user_row, comp_row) in enumerate(zip(self.board, other_board.board)):
+            for row, (user_row, comp_row) in enumerate(
+                zip(self.board, other_board.board)
+            ):
                 # Adjust the spacing after the user row to align the rows
                 user_row_str = "|".join(user_row)
-                space_after_user_row = (2 * self.size - len(user_row_str)) + space_between_boards
-                print(f"{row}|{user_row_str}{' ' * space_after_user_row}{row}|{'|'.join(comp_row)}")
+                space_after_user_row = (
+                    2 * self.size - len(user_row_str)
+                ) + space_between_boards
+                print(
+                    f"{row}|{user_row_str}{' ' * space_after_user_row}{row}|{'|'.join(comp_row)}"
+                )
         else:
             print("")
             col_numbers = " ".join(map(str, range(self.size)))
             print(f"  {col_numbers}")
             for row_number, row in enumerate(self.board):
                 print(f"{row_number}|{'|'.join(row)}")
-     
-            # Prints the boards with rows and columns.  
+
+            # Prints the boards with rows and columns.
             player_name = f"{self.name}'s" if self.type == "user" else "Computer"
             print(f"{player_name} gameboard", end="")
 
@@ -108,38 +114,50 @@ class Board:
                 header = f"  {col_str}{' ' * space_between_boards}  {col_str}"
                 print(header)
 
-                for row, (user_row, comp_row) in enumerate(zip(self.board, other_board.board)):
+                for row, (user_row, comp_row) in enumerate(
+                    zip(self.board, other_board.board)
+                ):
                     # Adjust the spacing after the user row to align the rows
                     user_row_str = "|".join(user_row)
-                    space_after_user_row = (2 * self.size - len(user_row_str)) + space_between_boards
-                    print(f"{row}|{user_row_str}{' ' * space_after_user_row}{row}|{'|'.join(comp_row)}")
+                    space_after_user_row = (
+                        2 * self.size - len(user_row_str)
+                    ) + space_between_boards
+                    print(
+                        f"{row}|{user_row_str}{' ' * space_after_user_row}{row}|{'|'.join(comp_row)}"
+                    )
             else:
                 print("")
                 col_numbers = " ".join(map(str, range(self.size)))
                 print(f"  {col_numbers}")
                 for row_number, row in enumerate(self.board):
-                    print(f"{row_number}|{'|'.join(row)}")    
+                    print(f"{row_number}|{'|'.join(row)}")
                 # Prints the boards with rows and columns.
                 player_name = f"{self.name}'s" if self.type == "user" else "Computer"
-                print(f"{player_name} gameboard{' ' * (2 * self.size - len(player_name) - len(' gameboard'))}", end="")
-            
+                print(
+                    f"{player_name} gameboard{' ' * (2 * self.size - len(player_name) - len(' gameboard'))}",
+                    end="",
+                )
+
                 if other_board is not None:
                     print(f"   {other_board.name}'s gameboard")
                     col_str = " ".join(map(str, range(self.size)))
                     header = f"  {col_str}{' ' * (2 * self.size - len(col_str))}      {col_str}"
                     print(header)
 
-                    for row, (user_row, comp_row) in enumerate(zip(self.board, other_board.board)):
-                        print(f"{row}|{'|'.join(user_row)}{' ' * (2 * self.size - len(user_row))}|  "
-                            f"{row}|{'|'.join(comp_row)}")
+                    for row, (user_row, comp_row) in enumerate(
+                        zip(self.board, other_board.board)
+                    ):
+                        print(
+                            f"{row}|{'|'.join(user_row)}{' ' * (2 * self.size - len(user_row))}|  "
+                            f"{row}|{'|'.join(comp_row)}"
+                        )
                 else:
                     print("")
                     col_numbers = " ".join(map(str, range(self.size)))
                     print(f"  {col_numbers}")
                     for row_number, row in enumerate(self.board):
                         print(f"{row_number}|{'|'.join(row)}")
-                        
-                    
+
     def guess(self, x, y):
         """
         Checks whether the guess is a hit or miss and
@@ -161,7 +179,7 @@ class Board:
             return "Hit"
         else:
             self.board[x][y] = "-"
-            return "Miss"        
+            return "Miss"
 
     def place_ship(self, x, y, type="computer"):
         """
@@ -175,7 +193,7 @@ class Board:
             self.ships.append((x, y))
             if self.type == "user":
                 self.board[x][y] = "@"
-    
+
     def populate_board(self):
         """
         Randomly place ships on the board.
@@ -197,12 +215,12 @@ def validate_coordinates(board, board_2, row, col):
     if shot == "Hit":
         print(f"{board.name} hit an enemy ship!")
     else:
-        print(f"{board.name} missed this time.")  
+        print(f"{board.name} missed this time.")
 
 
 def make_guess(board, other_board):
     """
-    Handles the process of making a guess, taking input from the user or 
+    Handles the process of making a guess, taking input from the user or
     generating it for the computer.
     """
     print(f"\n{board.name}'s Turn:")
@@ -213,12 +231,17 @@ def make_guess(board, other_board):
             row = int(input("Enter the row (0 to {}): ".format(board.size - 1)))
             col = int(input("Enter the column (0 to {}): ".format(board.size - 1)))
 
-            if 0 <= row < board.size and 0 <= col < board.size and (row, col) not in board.guesses:
+            if (
+                0 <= row < board.size
+                and 0 <= col < board.size
+                and (row, col) not in board.guesses
+            ):
                 return row, col
             else:
                 print("Invalid coordinates. Please enter valid and unused coordinates.")
         except ValueError:
             print("Invalid input. Please enter a number.")
+
 
 def play_battleship():
     """
@@ -237,7 +260,9 @@ def play_battleship():
 
         # Check if user has sunk all computer ships
         if len(comp_board.ships) == 0:
-            print(f"\nCongratulations, {user_name}! You sunk all computer ships. You win!")
+            print(
+                f"\nCongratulations, {user_name}! You sunk all computer ships. You win!"
+            )
             break
 
         # Computer's turn
