@@ -165,8 +165,8 @@ def make_guess(board, other_board):
 
     while True:
         try:
-            row = int(input("Enter the row (0 to {}): ".format(board.size - 1)))
-            col = int(input("Enter the column (0 to {}): ".format(board.size - 1)))
+            row = int(input("Enter the row (0 to {} \n): ".format(board.size - 1)))
+            col = int(input("Enter the column (0 to {} \n): ".format(board.size - 1)))
 
             if (
                 0 <= row < board.size
