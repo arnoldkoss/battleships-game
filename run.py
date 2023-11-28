@@ -83,80 +83,17 @@ class Board:
             header = f"  {col_str}{' ' * (space_between_boards + 1)}  {col_str}"
             print(header)
 
-            for row, (user_row, comp_row) in enumerate(
-                zip(self.board, other_board.board)
-            ):
+            for row, (user_row, comp_row) in enumerate(zip(self.board, other_board.board)):
                 # Adjust the spacing after the user row to align the rows
                 user_row_str = "|".join(user_row)
-                space_after_user_row = (
-                    2 * self.size - len(user_row_str)
-                ) + space_between_boards
-                print(
-                    f"{row}|{user_row_str}{' ' * space_after_user_row}{row}|{'|'.join(comp_row)}"
-                )
+                space_after_user_row = (2 * self.size - len(user_row_str)) + space_between_boards
+                print(f"{row}|{user_row_str}{' ' * space_after_user_row}{row}|{'|'.join(comp_row)}")
         else:
             print("")
             col_numbers = " ".join(map(str, range(self.size)))
             print(f"  {col_numbers}")
             for row_number, row in enumerate(self.board):
                 print(f"{row_number}|{'|'.join(row)}")
-
-            # Prints the boards with rows and columns.
-            player_name = f"{self.name}'s" if self.type == "user" else "Computer"
-            print(f"{player_name} gameboard", end="")
-
-            # Adjust the spacing between the two boards
-            space_between_boards = 10  # You can adjust this value as needed​
-
-            if other_board is not None:
-                print(f"{' ' * space_between_boards}{other_board.name}'s gameboard")
-                col_str = " ".join(map(str, range(self.size)))
-                header = f"  {col_str}{' ' * space_between_boards}  {col_str}"
-                print(header)
-
-                for row, (user_row, comp_row) in enumerate(
-                    zip(self.board, other_board.board)
-                ):
-                    # Adjust the spacing after the user row to align the rows
-                    user_row_str = "|".join(user_row)
-                    space_after_user_row = (
-                        2 * self.size - len(user_row_str)
-                    ) + space_between_boards
-                    print(
-                        f"{row}|{user_row_str}{' ' * space_after_user_row}{row}|{'|'.join(comp_row)}"
-                    )
-            else:
-                print("")
-                col_numbers = " ".join(map(str, range(self.size)))
-                print(f"  {col_numbers}")
-                for row_number, row in enumerate(self.board):
-                    print(f"{row_number}|{'|'.join(row)}")
-                # Prints the boards with rows and columns.
-                player_name = f"{self.name}'s" if self.type == "user" else "Computer"
-                print(
-                    f"{player_name} gameboard{' ' * (2 * self.size - len(player_name) - len(' gameboard'))}",
-                    end="",
-                )
-
-                if other_board is not None:
-                    print(f"   {other_board.name}'s gameboard")
-                    col_str = " ".join(map(str, range(self.size)))
-                    header = f"  {col_str}{' ' * (2 * self.size - len(col_str))}      {col_str}"
-                    print(header)
-
-                    for row, (user_row, comp_row) in enumerate(
-                        zip(self.board, other_board.board)
-                    ):
-                        print(
-                            f"{row}|{'|'.join(user_row)}{' ' * (2 * self.size - len(user_row))}|  "
-                            f"{row}|{'|'.join(comp_row)}"
-                        )
-                else:
-                    print("")
-                    col_numbers = " ".join(map(str, range(self.size)))
-                    print(f"  {col_numbers}")
-                    for row_number, row in enumerate(self.board):
-                        print(f"{row_number}|{'|'.join(row)}")
 
     def guess(self, x, y):
         """
