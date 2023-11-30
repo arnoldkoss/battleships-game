@@ -13,7 +13,8 @@ By developing the game on Code Institutes Python Template, it can be run in a we
 - [How to play](#how-to-play)
 - [User Experience](#user-experience)
   - [Site Goals](#site-goals)
-  - [User Goals](#user-goals)
+  - [User Goals](#user-goals) 
+- [Structure](#structure)  
 - [Features](#features)
   - [Welcome Message](#welcome-message)
   - [Game Boards](#game-boards)
@@ -47,6 +48,7 @@ Battleships is a board game based on the classic pen-and-paper version. The obje
 
 ## Structure
 
+The structure of the Battleships game is kept as simple as posible for a easy navigation and to be easy to play with simple interactions from the user. It has a name imput and coordinates imputs with clear guidance from the game.
 
 ## Features
 
@@ -119,15 +121,31 @@ In this section I will provide an overview of the features included in Battleshi
 
 ## Bugs
 
-- The game boards initially started the rows and columns count on 1. This created some issues when validating user and computer coordinates. By changing to starting at 0, they match the coordinates created when an input is made, as they start with 0-index.
+- The game boards initially started the rows and columns count on 1. This created some issues when validating user and computer coordinates. By changing #to starting at 0, they match the coordinates created when an input is made, as they start with 0-index.
 - My ```guess``` function wasn't checking correctly if it's a hit or a miss due to a syntax error.
 
 ## Remaining bugs
 
  No bugs remaining
 
+## Technologies Used
 
- ## Deployment
+### Languages
+[Python](https://www.python.org/)
+
+### Python Libraries
+[Random](https://docs.python.org/3/library/random.html) - A Python library used to generate random integers in the game.
+
+### Programs & Libraries
+- [Git](https://git-scm.com/) -  Git was used through the Gitpod terminal to commit to Git and push to GitHub.
+- [GitHub](https://github.com/) - All code for the site is stored on GitHub after being pushed from Git.
+- [Heroku](https://id.heroku.com/login) - Used for hosting the game.
+- [Patorjk ASCII Art Generator](https://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20) - The ASCII art used in the game was generated with this app.
+- [PEP8 Online Validator](https://pep8ci.herokuapp.com/) - Validation of Python code was done with PEP8 Online.
+
+
+
+## Deployment
 
  The game was deployed using Heroku. 
  - Steps for deployment:
