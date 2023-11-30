@@ -9,8 +9,44 @@ By developing the game on Code Institutes Python Template, it can be run in a we
 
 # Table of Contents
 
+- [Battleships](#battleships)
+- [How to play](#how-to-play)
+- [User Experience](#user-experience)
+  - [Site Goals](#site-goals)
+  - [User Goals](#user-goals)
+- [Features](#features)
+  - [Welcome Message](#welcome-message)
+  - [Game Boards](#game-boards)
+  - [Future Futures](#future-futures)
+- [Data model](#data-model)
+- [Testing](#testing)
+  - [Validator Testing](#validator-testing)
+  - [Manual Testing](#manual-testing)
+- [Bugs](#bugs)
+- [Remaining Bugs](#remaining-bugs)     
+- [Deployment](#deployment)
+- [Credits](#credits)
+
+  
+
+
 ## How to play
 Battleships is a board game based on the classic pen-and-paper version. The objective is to sink all your opponent's ships before your own ships are destroyed. In this version of the game, players start by entering their names, and two boards are randomly generated. The user can see their own ships marked by an '@' sign but cannot see the computer's ships. Guesses that aren't hits are marked with a '-' sign, while hits are marked with an 'X'. The user and the computer take turns making guesses and attempting to sink each other's battleships. The winner is the first to successfully sink the opponent's battleships.
+
+## User Experience
+
+### Site Goals
+- Create a fun and well-functioning mini game in a CLI environment.
+- Provide a intuitive navigation throughout the game and give the user a positive overall impression.
+- Write clean and readable code on which the game runs, and make sure the game doesn't break on any user inputs.
+
+### User Goals
+- Play a fun and simple game against the computer.
+- Understand the logic of the game easily.
+- Understand the way the game works and navigation of the game instantly.
+
+## Structure
+
 
 ## Features
 
@@ -110,4 +146,6 @@ In this section I will provide an overview of the features included in Battleshi
 
    - [W3Schools](https://www.w3schools.com/) helped with mainly syntax issues 
    - [Stackowerflow](https://stackoverflow.com/) was a source of inspiration and helped me with several solutions throughout the game such as the reason for using  `if __name__ == "__main__":`. The post where I found it: [here](https://stackoverflow.com/questions/419163/what-does-if-name-main-do).
+   - Code Institute for the deployment terminal.
+   - My mentor Spence helped me with some of the code, including how to fix an issue with an error in my code, great support and more .
 
