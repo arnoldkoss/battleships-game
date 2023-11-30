@@ -16,9 +16,41 @@ Battleships is a board game based on the classic pen-and-paper version. The obje
 
 In this section I will provide an overview of the features included in Battleships. The game is built on the Code Institute Python Template, which provides the HTML and CSS code necessary to play the game in a browser. As that code is not written by the developer, its features will not be mentioned.
 
-### Welcome message
+### Welcome Message
 
 - The welcome message presented as ASCII art and a small welcome message.
 - The user is then prompted to enter a name, which is validated to be at least one character . If left blank, an error message will print, asking for a valid input.
 
 ![welcome message image](documentation/welcomeMessage.png)
+
+- Invalid input (if the user inserts non-alphabetic characters)
+
+![invalid input image](documentation/invalidInput.png)
+
+- Invalid input (if the user left the input blank)
+
+![invalid input image 2](documentation/invalidInput2.png)
+
+
+### Game Boards
+
+- Random board generation.
+  - Ships are randomly generated on the users board as well for the computer.
+  - The user can not see the placement of the computer's ships.
+  - When the name imput  is set, the game boards are printed out and populated with a number of 4 ships on each board.
+  - Numbers are printed along the rows and columns to help the user easier find the coordinates.
+
+  ![the boards image](documentation/theBoards.png)
+
+- Play against the computer.
+- Accepts user input.
+
+![playing the game image](documentation/userInput.png)
+
+- Input validation and error-checking
+  - Using same coordinates
+  ![same coordinates input image](documentation/sameCoordinates.png)
+  - Entering coordinates outside the size of the grid or using non-numerical coordinates.
+  ![invalid coordinates image](documentation/invalidCoordinates.png)
+
+ - Data maintained in class instances.
