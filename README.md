@@ -162,7 +162,7 @@ In this section I will provide an overview of the features included in Battleshi
    - Scroll down to Manual deploy and click ```Deploy Branch```, making sure that the main branch is selected.
    - To enable automatic updates to the project, simply scroll up to Automatic deploys and click the ```Enable Automatic Deploys``` button.
    - My project is now hosted on Heroku.
-
+   - The live link can be found here - [Battleships](https://battleships1-396329e2c61c.herokuapp.com/?fbclid=IwAR1bs1Vj-TFd_oDXeGFi3tM1wOuhiQ6bcZUB2ttsUrTyi0hhcWlu20mN-UY)
 
    ## Credits
 
