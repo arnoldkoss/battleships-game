@@ -24,7 +24,11 @@ By developing the game on Code Institutes Python Template, it can be run in a we
   - [Validator Testing](#validator-testing)
   - [Manual Testing](#manual-testing)
 - [Bugs](#bugs)
-- [Remaining Bugs](#remaining-bugs)     
+- [Remaining Bugs](#remaining-bugs)
+- [Technologies Used](#technologies-used)
+  - [Languages](#languages) 
+  - [Python Libraries](#python-libraries) 
+  - [Programs & Libraries](#programs--libraries)   
 - [Deployment](#deployment)
 - [Credits](#credits)
 
