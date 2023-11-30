@@ -71,7 +71,43 @@ In this section I will provide an overview of the features included in Battleshi
 
  ## Testing
 
+ ### Validator Testing
+
  - The python code is free of errors and written correctly, validation through the PEP8 online validator was performed with no errors or warnings raised.
 
- - Tested in my local terminal and the Code Institute Heroku terminal.
- 
+
+### Manual Testing
+
+- Manual testing was done throughout the developing process, where all user inputs have the desired effect. If a user input is invalid, a relevant message will tell the user what to input instead.
+- Testing was performed in both the Gitpod terminal and Code Institutes Heroku mock terminal in several different browsers, such as Chrome, Edge and Firefox.
+
+## Bugs
+
+- The game boards initially started the rows and columns count on 1. This created some issues when validating user and computer coordinates. By changing to starting at 0, they match the coordinates created when an input is made, as they start with 0-index.
+- My ```guess``` function wasn't checking correctly if it's a hit or a miss due to a syntax error.
+
+## Remaining bugs
+
+ No bugs remaining
+
+
+ ## Deployment
+
+ The game was deployed using Heroku. 
+ - Steps for deployment:
+   - Go to Heroku's website at https://www.heroku.com and sign up/log in.
+   - Click on the New button near the top right corner, and select Create new app.
+   - Name the project and set the region to the relevant one, then click the ```Create app``` button.
+   - Click on ```Add buildpack``` and add ```Python```, click ```Save changes```. Repeat the process for ```nodejs``` and make sure they are in the correct order, with ```Python``` coming first.
+   - Next, navigate to the ```Deploy``` tab and under ```Deployment method``` connect to your GitHub account.
+   - Directly below Deployment method there is a search bar to search for your repository. Connect the correct one to Heroku by clicking the ```Connect``` button.
+   - Scroll down to Manual deploy and click ```Deploy Branch```, making sure that the main branch is selected.
+   - To enable automatic updates to the project, simply scroll up to Automatic deploys and click the ```Enable Automatic Deploys``` button.
+   - My project is now hosted on Heroku.
+
+
+   ## Credits
+
+   - [W3Schools](https://www.w3schools.com/) helped with mainly syntax issues 
+   - [Stackowerflow](https://stackoverflow.com/) was a source of inspiration and helped me with several solutions throughout the game such as the reason for using  `if __name__ == "__main__":`. The post where I found it: [here](https://stackoverflow.com/questions/419163/what-does-if-name-main-do).
+
