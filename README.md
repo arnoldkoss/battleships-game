@@ -54,3 +54,24 @@ In this section I will provide an overview of the features included in Battleshi
   ![invalid coordinates image](documentation/invalidCoordinates.png)
 
  - Data maintained in class instances.
+
+ ### Future Futures
+
+ - Allow the user to select the board size and the number of ships.
+ - Allow the user to place the ships by himself.
+ - Add different sizes for the ships.
+ - Add a score feature.
+
+ ## Data model
+
+ - My game utilizes a Board class to create both boards, in which the input parameters, such as size and number of ships are stored. It also takes in all guesses made on each board, the location of the deployed ships, the name and type of player the board belongs to (user or computer).
+ - The class then builds the boards with the correct parameters and prints them out. After each turn the boards are updated with the stored guesses and printed out.
+ - Aside from the Board class there are helper functions that are called as the game progresses, such as asking for and validating the coordinates guessed and generating random integers to use when adding the ships.
+
+
+ ## Testing
+
+ - The python code is free of errors and written correctly, validation through the PEP8 online validator was performed with no errors or warnings raised.
+
+ - Tested in my local terminal and the Code Institute Heroku terminal.
+ 
