@@ -77,17 +77,23 @@ class Board:
         space_between_boards = 10  # Adjust this value as needed
 
         if other_board is not None:
-            print(f"{' ' * space_between_boards}{other_board.name}'s gameboard")
+            print(f"{' ' * space_between_boards}
+            {other_board.name}'s gameboard")
             col_str = " ".join(map(str, range(self.size)))
             # Adding an extra space for the computer's column header
-            header = f"  {col_str}{' ' * (space_between_boards + 1)}  {col_str}"
+            header = f" {col_str}{' ' * (space_between_boards + 1)}  {col_str}"
             print(header)
 
-            for row, (user_row, comp_row) in enumerate(zip(self.board, other_board.board)):
+            for row, (user_row, comp_row) in
+            enumerate(zip(self.board, other_board.board)):
                 # Adjust the spacing after the user row to align the rows
                 user_row_str = "|".join(user_row)
-                space_after_user_row = (2 * self.size - len(user_row_str)) + space_between_boards
-                print(f"{row}|{user_row_str}{' ' * space_after_user_row}{row}|{'|'.join(comp_row)}")
+                space_after_user_row = (2 * self.size - len(user_row_str))
+                + space_between_boards
+                print(
+                    f"{row} | {user_row_str}{' ' * space_after_user_row}"
+                    f"{row} | {'|'.join(comp_row)}"
+                )
         else:
             print("")
             col_numbers = " ".join(map(str, range(self.size)))
@@ -101,6 +107,7 @@ class Board:
         saves all guesses in guesses variable.
         Prints 'X' for hit and '-' for miss.
         """
+        print(self.name, "SHIPS: ", self.ships)
         if not (0 <= x < self.size and 0 <= y < self.size):
             print("Invalid guess. Please enter valid row and column values.")
             return "Invalid Guess"
@@ -165,17 +172,18 @@ def make_guess(board, other_board):
 
     while True:
         try:
-            row = int(input("Enter the row (0 to {} \n): ".format(board.size - 1)))
-            col = int(input("Enter the column (0 to {} \n): ".format(board.size - 1)))
+            row = int(input(
+               "Enter the row (0 to {} \n): ".format(board.size - 1)))
+            col = int(input(
+                "Enter the column (0 to {} \n): ".format(board.size - 1)))
 
-            if (
-                0 <= row < board.size
-                and 0 <= col < board.size
-                and (row, col) not in board.guesses
-            ):
+            if (check_input(row) and
+                check_input(col) and
+               (row, col) not in board.guesses):
                 return row, col
             else:
-                print("Invalid coordinates. Please enter valid and unused coordinates.")
+                print("Invalid coordinates")
+                print("Please enter valid and unused coordinates.")
         except ValueError:
             print("Invalid input. Please enter a number.")
 
@@ -185,8 +193,11 @@ def play_battleship():
     Main function to play Battleship.
     """
     user_board = Board(size=6, num_ships=4, name=user_name, board_type="user")
-    comp_board = Board(size=6, num_ships=4, name="Computer", board_type="computer")
-
+    comp_board = Board(
+        size=6,
+        num_ships=4,
+        name="Computer",
+        board_type="computer")
     user_board.populate_board()
     comp_board.populate_board()
 
@@ -198,7 +209,8 @@ def play_battleship():
         # Check if user has sunk all computer ships
         if len(comp_board.ships) == 0:
             print(
-                f"\nCongratulations, {user_name}! You sunk all computer ships. You win!"
+                f"\nCongratulations, {user_name}! "
+                f"You sunk all computer ships. You win!"
             )
             break
 
@@ -221,3 +233,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
