@@ -116,12 +116,15 @@ In this section I will provide an overview of the features included in Battleshi
  ### Validator Testing
 
  - The python code is free of errors and written correctly, validation through the PEP8 online validator was performed with no errors or warnings raised.
+ ![pep8 validator image](documentation/pep8.png)
 
 
 ### Manual Testing
 
 - Manual testing was done throughout the developing process, where all user inputs have the desired effect. If a user input is invalid, a relevant message will tell the user what to input instead.
 - Testing was performed in both the Gitpod terminal and Code Institutes Heroku mock terminal in several different browsers, such as Chrome, Edge and Firefox.
+- All features respond as expected and give the correct error messages when user input is invalid. 
+- The ship placement has been checked to make sure that no overlapping occurs and that all ships are deployed correctly. The computer inputs have been tested to make sure no duplicate guesses or other issues occur that are outside the control of the user.
 
 ## Bugs
 
