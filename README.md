@@ -133,7 +133,11 @@ In this section I will provide an overview of the features included in Battleshi
 
 ## Remaining bugs
 
- No bugs remaining
+It seems there is a persistent issue in the code where certain coordinates result in an incorrect message for invalid input, even when those coordinates are within the expected range (0 to 5). Interestingly, the problem appears to be inconsistent, with the affected coordinates changing each time the game is started.
+
+Despite efforts from both a tutor and a mentor, the root cause of the problem remains elusive. During a tutor session with Sean from Code Institute, the issue was observed even though the code appeared correct in his terminal. The peculiar aspect is that when the terminal was shared (from my end), the problem manifested, indicating a discrepancy in behavior.
+
+My mentor, Spence, also couldn't identify the underlying problem. This issue seems to be particularly challenging, and it might be related to the interaction between the code and the terminal environment. 
 
 ## Technologies Used
 
