@@ -9,7 +9,7 @@ def welcome_message():
     https://patorjk.com/software/taag/#p=display&f=Doom&t=Battleship
     """
     print("""
- _    _      _                          _ 
+ _    _      _                          _
 | |  | |    | |                        | |
 | |  | | ___| | ___ ___  _ __ ___   ___| |
 | |/\| |/ _ \ |/ __/ _ \| '_ ` _ \ / _ \ |
@@ -63,7 +63,6 @@ class Board:
         self.ships = []
         self.board = [["." for x in range(size)] for y in range(size)]
 
-
     def print_board(self, other_board=None):
         """
         Prints the boards with rows and columns.
@@ -98,8 +97,7 @@ class Board:
             print(f"  {col_numbers}")
             for row_number, row in enumerate(self.board):
                 print(f"{row_number}|{'|'.join(row)}")
-     
-            # Prints the boards with rows and columns.  
+            # Prints the boards with rows and columns.
             player_name = f"{self.name}'s" if \
                 self.type == "user" else "Computer"
             print(f"{player_name} gameboard", end="")
@@ -129,7 +127,7 @@ class Board:
                 col_numbers = " ".join(map(str, range(self.size)))
                 print(f"  {col_numbers}")
                 for row_number, row in enumerate(self.board):
-                    print(f"{row_number}|{'|'.join(row)}")    
+                    print(f"{row_number}|{'|'.join(row)}")
                 # Prints the boards with rows and columns.
                 player_name = (f"{self.name}'s"
                                if self.type == "user" else "Computer")
@@ -146,7 +144,6 @@ class Board:
                     f"{padding}",
                     end=""
                 )
-            
                 if other_board is not None:
                     print(f"   {other_board.name}'s gameboard")
                     col_str = " ".join(map(str, range(self.size)))
@@ -190,7 +187,7 @@ class Board:
             return "Hit"
         else:
             self.board[x][y] = "-"
-            return "Miss"        
+            return "Miss"
 
     def place_ship(self, x, y, type="computer"):
         """
@@ -204,7 +201,7 @@ class Board:
             self.ships.append((x, y))
             if self.type == "user":
                 self.board[x][y] = "@"
-    
+
     def populate_board(self):
         """
         Randomly place ships on the board.
@@ -226,12 +223,12 @@ def validate_coordinates(board, board_2, row, col):
     if shot == "Hit":
         print(f"{board.name} hit an enemy ship!")
     else:
-        print(f"{board.name} missed this time.")  
+        print(f"{board.name} missed this time.")
 
 
 def make_guess(board, other_board):
     """
-    Handles the process of making a guess, taking input from the user or 
+    Handles the process of making a guess, taking input from the user or
     generating it for the computer.
     """
     print(f"\n{board.name}'s Turn:")
@@ -244,25 +241,35 @@ def make_guess(board, other_board):
             col = int(
                   input("Enter the column (0 to {}): ".format(board.size - 1)))
 
-            if 0 <= row < board.size and 0 <= col < board.size and (row, col) not in board.guesses:
+            if (
+                0 <= row < board.size and
+                0 <= col < board.size and
+                (row, col) not in board.guesses
+            ):
                 return row, col
             else:
-                print("Invalid coordinates. Please enter valid and unused coordinates.")
+                print("Invalid coordinates. "
+                      "Please enter valid and unused coordinates.")
         except ValueError:
             print("Invalid input. Please enter a number.")
+
+
 def play_battleship():
     """
     Main function to play Battleship.
     """
     user_board = Board(
-        size=6, 
-        num_ships=4, 
-        name=user_name, 
-        board_type="user")
-    comp_board = Board(size=6, 
-    num_ships=4, 
-    name="Computer", 
-    board_type="computer")
+        size=6,
+        num_ships=4,
+        name=user_name,
+        board_type="user"
+    )
+    comp_board = Board(
+        size=6,
+        num_ships=4,
+        name="Computer",
+        board_type="computer"
+    )
 
     user_board.populate_board()
     comp_board.populate_board()
@@ -274,7 +281,10 @@ def play_battleship():
 
         # Check if user has sunk all computer ships
         if len(comp_board.ships) == 0:
-            print(f"\nCongratulations, {user_name}! You sunk all computer ships. You win!")
+            print(
+                f"\nCongratulations, {user_name}! "
+                "You sunk all computer ships. You win!"
+            )
             break
 
         # Computer's turn
@@ -292,5 +302,7 @@ def main():
     welcome_message()
     input_name()
     play_battleship()
+
+
 if __name__ == "__main__":
     main()
